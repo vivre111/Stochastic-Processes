@@ -1,0 +1,12 @@
+\contentsline {section}{\numberline {1}Course Information}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Contact}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Grading Scheme}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Review of Elementary Probablity}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Conditional Distributions and Conditional Expectation}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Computing Probability by conditioning}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Discrete-time Markov Chain}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}transiant and recurrance}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Galton Waston Branching Process}{7}{subsection.3.2}%
+\contentsline {section}{\numberline {4}The Exponential Distribution and the Poisson Process}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}poisson Process}{8}{subsection.4.1}%

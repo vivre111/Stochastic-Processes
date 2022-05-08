@@ -1,0 +1,380 @@
+\documentclass[10pt]{article} 
+
+\usepackage{fullpage}
+\usepackage{bookmark}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref} % for the URL
+\usepackage[shortlabels]{enumitem}
+\usepackage{mathtools}
+\usepackage[most]{tcolorbox}
+\usepackage[amsmath,standard,thmmarks]{ntheorem} 
+\usepackage{physics}
+\usepackage{pst-tree} % for the trees
+\usepackage{verbatim} % for comments, for version control
+\usepackage{tabu}
+\usepackage{tikz}
+\usepackage{float}
+
+\lstnewenvironment{python}{
+\lstset{frame=tb,
+language=Python,
+aboveskip=3mm,
+belowskip=3mm,
+showstringspaces=false,
+columns=flexible,
+basicstyle={\small\ttfamily},
+numbers=none,
+numberstyle=\tiny\color{Green},
+keywordstyle=\color{Violet},
+commentstyle=\color{Gray},
+stringstyle=\color{Brown},
+breaklines=true,
+breakatwhitespace=true,
+tabsize=2}
+}
+{}
+
+\lstnewenvironment{cpp}{
+\lstset{
+backgroundcolor=\color{white!90!NavyBlue},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+basicstyle={\scriptsize\ttfamily},        % the size of the fonts that are used for the code
+breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+breaklines=true,                 % sets automatic line breaking
+captionpos=b,                    % sets the caption-position to bottom
+commentstyle=\color{Gray},    % comment style
+deletekeywords={...},            % if you want to delete keywords from the given language
+escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+% firstnumber=1000,                % start line enumeration with line 1000
+frame=single,	                   % adds a frame around the code
+keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+keywordstyle=\color{Cyan},       % keyword style
+language=c++,                 % the language of the code
+morekeywords={*,...},            % if you want to add more keywords to the set
+% numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+% numbersep=5pt,                   % how far the line-numbers are from the code
+% numberstyle=\tiny\color{Green}, % the style that is used for the line-numbers
+rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+showstringspaces=false,          % underline spaces within strings only
+showtabs=false,                  % show tabs within strings adding particular underscores
+stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+stringstyle=\color{GoldenRod},     % string literal style
+tabsize=2,	                   % sets default tabsize to 2 spaces
+title=\lstname}                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+{}
+
+% floor, ceiling, set
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\set}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\mean}{mean}
+
+% commonly used sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\sset}{\subseteq}
+
+\theoremstyle{break}
+\theorembodyfont{\upshape}
+
+\newtheorem{thm}{Theorem}[subsection]
+\tcolorboxenvironment{thm}{
+enhanced jigsaw,
+colframe=Dandelion,
+colback=White!90!Dandelion,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{cor}{Corollary}[thm]
+\tcolorboxenvironment{cor}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!RoyalPurple},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{RoyalPurple},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\newtheorem{lem}[thm]{Lemma}
+\tcolorboxenvironment{lem}{
+enhanced jigsaw,
+colframe=Red,
+colback={White!95!Red},
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{ex}[thm]{Example}
+\tcolorboxenvironment{ex}{% from ntheorem
+blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{Gray}
+}
+
+\newtheorem*{pf}{Proof}
+\tcolorboxenvironment{pf}{% from ntheorem
+breakable,blanker,left=5mm,
+sharp corners,
+before skip=10pt,after skip=10pt,
+borderline west={2pt}{0pt}{NavyBlue!80!white}
+}
+
+\newtheorem{defn}{Definition}[subsection]
+\tcolorboxenvironment{defn}{
+enhanced jigsaw,
+colframe=Cerulean,
+colback=White!90!Cerulean,
+drop fuzzy shadow east,
+rightrule=2mm,
+sharp corners,
+before skip=10pt,after skip=10pt
+}
+
+\newtheorem{prop}[thm]{Proposition}
+\tcolorboxenvironment{prop}{
+boxrule=0pt,
+boxsep=0pt,
+colback={White!90!Green},
+enhanced jigsaw,
+borderline west={2pt}{0pt}{Green},
+sharp corners,
+before skip=10pt,
+after skip=10pt,
+breakable
+}
+
+\setlength\parindent{0pt}
+\setlength{\parskip}{2pt}
+
+
+\begin{document}
+\let\ref\Cref
+
+\title{\bf{STAT333 Applied Probability}}
+\date{\today}
+\author{Austin Xia}
+
+\maketitle
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+\section{Course Information}
+    \subsection{Contact}
+        \begin{center}
+            Instructor: Steve Drekic\\
+            Email: sdrekic@uwaterloo.ca
+        \end{center}
+    \subsection{Grading Scheme}
+        \begin{center}
+            4 assignments 100\%...\\
+        \end{center}
+\section{}
+    \subsection{Review of Elementary Probablity}
+        \begin{defn}[Probability Function]
+            For each event A of a sample space S, P(A) is defined as the probability of event A, satisfying 3 conditions:
+            \begin{itemize}
+                \item $0\leq P(A) \leq 1$
+                \item p(S)=1
+                \item $P(\cup_{i=1}^nA_i)=\sum^n_{i=1}P(A_i)$ if the sequence of events $A_i$ are mutually exclusive
+            \end{itemize}
+        \end{defn}
+
+        \begin{defn}[independent]
+            X and Y are independent rvs if $f(x,y)=f(x)f(y)$
+        \end{defn}
+        \begin{defn}[multivariate mgf]
+            $\phi_{x,y}(a,b)=E(e^{ax+by})$
+        \end{defn}
+        \begin{thm}
+            if $X_1, X_2...X_n$ are independent rvs where $\phi_{X_i}(t)$ is the mgf of $X_i, i = 1,2,...n$.
+            then $T=\sum^n_{i=1}X_i$ has mgf $\phi_x(t)=\prod_{i=1}^n\phi_{X_i}(t)$
+        \end{thm}
+        \begin{thm}[Strong Law of Large Numbers]
+            If $X_1, ..., X_n$ is an iid sequence of rvs, each having mean $\mu < \infty$, then with probability 1, as $n\rightarrow \infty$ 
+            $$\bar{X}_n=\frac{X_1+X_2 ... + X_n}{n}\rightarrow \mu$$              
+        \end{thm}
+    \subsection{Conditional Distributions and Conditional Expectation}
+        \begin{thm}[Law of total Expectation]
+            For rvs X and Y, 
+            $$E[g(X)]=E[E[g(x)|Y]]$$
+        \end{thm}
+        \begin{thm}
+            For rvs X and Y,
+            $$Var(X)=E[Var(X|Y)]+Var(E[X|Y])$$
+        \end{thm}
+    \subsection{Computing Probability by conditioning}
+        recall 
+        $$E[X]=E[E[X|Y]]= \sum_y E[X|Y=y]p_Y(y)$$
+        similarly 
+        $$P(A)=\sum_yP(A|Y=y)p_Y(y)$$
+        $P(X<Y)$ is good example of application
+    \section{Discrete-time Markov Chain}
+        \begin{defn}[Stochastic Process]
+            $\{X(t),t\in T\}$ is called a stochastic process if $X(t)$ is a rv for any $t\in T$
+        \end{defn}
+        \begin{defn}[DTMC]
+            A stochastic process $\{X_n,n\in N\}$ is said to be a discrete-time Markov chain (DTMC) if:
+            \begin{itemize}
+                \item $X_n$ is a discrete rv for all $n\in N$
+                \item the Markov property hold:
+                $$P(X_{n+1}=x_{n+1}|X_n=x_n,X_{n-1}=x_{n-1}...X_0=x_0)=P(X_{n+1}=x_{n+1}|X_n=x_n)$$
+            \end{itemize}
+        \end{defn}
+        \begin{defn}[transition probability Matrix] 
+            the transition probability from state i at time n to state j at time n+1 is:
+            $$P_{nij}=P(X_{n+1}=j|X_n=i),\ n\in\N$$
+            the transition probability matrix is all number of $P^{(n)}_{i,j}$
+            \\we can show by linear algebra that:$$P^{(n)}=P^n$$
+        \end{defn}
+        We will only be dealing with stationary or homogeneous situation we at every step we have the same P
+        \begin{defn}[$\alpha_n$]
+            The marginal pmf of $X_n$ is $\alpha_n=(\alpha_{n0}...\alpha_{nk})$
+            \\where $\alpha_{nk}=P(X_n=k)\forall k\in\N$
+        \end{defn}
+        \subsection{transiant and recurrance}
+            \begin{defn}
+                The probability that starting from state i, FIRST visit to j occurs 
+                at time n is 
+                $$f_{i,j}^{(n)}=P(X_n=j, X_{X-1}\neq j ...x_1 \neq j|X_0=i)$$
+            \end{defn}
+
+            note $f_{i,j}^{(1)}=P_{i,j}$
+            \begin{defn}[transiant]
+                State i is transient if $f_{i,i}<1$ otherwise, state i is recurrent
+            \end{defn}
+            \begin{defn}[$M_i$]
+                $M_i$ is a rv which counts the number of times the DTMC visits state i
+            \end{defn}
+            $$P(M_i=k|X_0=i)=f_{i,i}^k(1-f_{i,i})$$
+            visit k times, then never visit it again. We also notice this is geometric Distribution
+            so $$E[M_i|X_0=i]=E[Y-1]=\frac{1}{1-f_{i,i}}-1$$
+            so if $f_{i,i}=1$, $E[M_i|X_0=i]=\infty$, the state is recurrent
+            we can derive that $$E[M_i|X_0=i]=\sum P_{i,i}^{(n)}$$
+            \begin{thm}
+                if $i\leftrightarrow j$ and state i is recurrent, than state j is recurrent 
+            \end{thm}
+            \begin{thm}
+                if $i\leftrightarrow j$ and state i is recurrent, than $f_{i,j}=1$
+            \end{thm}
+
+            \begin{thm}
+                inconclusion, if sates are within the same communication class, then\\
+                \begin{itemize}
+                    \item the states communicate with each other 
+                    \item these states all have the same period
+                    \item these sates are either recurrent or all transiant
+                \end{itemize}
+            \end{thm}
+            \begin{thm}
+                A finite state DTMC has at least one recurrent state
+            \end{thm}
+            \begin{thm}
+                for any i and transient state j of DTMC, $$lim_{n\rightarrow \infty}P_{i,j}^{(n)}=0$$
+            \end{thm}
+            \begin{defn}
+                $N_i=min\{n\in Z:X_n=i\}$
+                mean recurrent time $$m_i=E[N_i|X_0=i]=\sum nf_{i,i}^{(n)}$$
+            \end{defn}
+            \begin{defn}
+                Suppose i is recurrent. i is positively recurrent iff $m_i < \infty$, 
+                i is nullrecurrent iff $m_i=\infty$
+            \end{defn}
+            \begin{thm}[Positive and null recurrence]
+                \begin{itemize}
+                    \item if $i\leftrightarrow j$ and i is positively recurrent then j is also
+                    \item in finite state DTMC, there can never be null recurrent states 
+                \end{itemize}
+            \end{thm}
+
+            \begin{defn}[stationary distribution]
+                if $\sum^\infty_{i=0}p_i=1$ and $p_j=\sum_{i=0}^\infty p_iP_{i,j}$\\
+                or in matrix form $$p(1,1,1...)=1\ p=pP$$
+            \end{defn}
+            \begin{thm}
+                if irreducible DTMC is positive reccurent iff stationary distribution exisist
+                \\Stationary distributions are not nessarily unique
+            \end{thm}
+            \begin{thm}[Basic Limit thm]
+                For an irredicible, recurrent, aperioadic DTMC, $lim_{n\rightarrow \infty}$ exisist and independent of state i satisfying
+                $$lim_{n\rightarrow\infty}P_{i,j}^{(n)}=\pi_j=\frac{1}{m_j} \forall i,j\in N$$
+                If it is also positive recurrent, then $\pi_j$ is the unique positive solution to 
+                $$\pi_j=\sum \pi_i P_{i,j}\ \sum \pi_j=1$$
+                
+            \end{thm}
+        \subsection{Galton Waston Branching Process}
+            $Z_i^{(j)}$ be the number of offspringt produced from individual i in jth generation
+            $$X_n=\sum_{i=1}^{X_{n-1}}Z_i^{n-1}$$
+            since $X_n$ is a random sum, we get 
+            $$E[X_n]=\mu E[X_{n-1}]$$
+            $$\pi_0=\sum_{j=0}^\infty \pi_0^j\alpha_j$$
+            this is summing $x_0$ has 0 to infty offsprings
+                
+    \section{The Exponential Distribution and the Poisson Process}
+        
+    $$Y=min\{X_1, ... X_n\} \vdash EXP(\sum_{i=1}^n\lambda_i)$$
+    $$P(X_1<X_2...<X_n)=\prod_{i=1}^{n-1}P(X_i=min\{X_i, X_{i+1}...\})$$
+    \begin{thm}
+        A rv X is memoryless iff $$P(x>y+z|X>y)=P(X>z)\forall y,z\geq 0$$
+    \end{thm}
+
+    \begin{thm}
+        A rv X is memoryless iff $$P(x>y+z)=P(X>y)*P(X>z)\forall y,z\geq 0$$
+    \end{thm}
+
+    Erlang Distribution:
+    $$\phi_x(t)=(\frac{\lambda}{\lambda -t})^n$$ which is product of n mgf of $exp(\lambda)$
+    \newpage
+    \subsection{poisson Process}
+    \begin{defn}[counting process]
+        A counting process is a stochastic process in which N(t) represents number of event by time t 
+    \end{defn}
+    \begin{defn}[independent increments]
+        A counting process has independent increments if $N(t_1)-N(S_1)$ is independent of 
+        $N(t_2)-N(s_2)$ whenever the intervels do not overlap
+    \end{defn}
+    \begin{defn}[stationary increments]
+        A counting process has independent increments if $N(s+t)-N(s)$ dependes only on t 
+    \end{defn}
+    \begin{defn}[o(h)]
+        A function y=f(x) is said to be "o(h)" (of order h) if 
+        $$lim_{h\rightarrow0}\frac{f(h)}{h}=0$$
+    \end{defn}
+
+    \begin{defn}[Poisson process]
+        a counting process is a Poisson process at rate $\lambda$ if 
+        \begin{itemize}
+            \item the process has independent and stationary increments 
+            \item $P(N(h)=1)=\lambda h +o(h)$
+            \item $P(N(h)\geq 2)=o(h)$
+        \end{itemize}
+    \end{defn}
+
+    \begin{thm}
+        if $\{N(t), t\geq 0\}$ is a Poisson process at rate $\lambda$, 
+        $N(t)\sim  POI(\lambda t)$
+    \end{thm}
+$$\neg\exists xA(x) \vdash \forall x \neg A(x)$$
+    \begin{thm}
+        if $\{N(t), t\geq 0\}$ is a Poisson process, then $\{T_i\}$ is a suquence of iid $EXP(\lambda)$
+    \end{thm}
+\end{document}
